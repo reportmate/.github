@@ -2,11 +2,9 @@
 
 **Reportmate** is a modular, cross-platform endpoint reporting system powered by **osquery**.
 
-It features:
-
 - A modern T3 stack web app — built with **Next.js**, **Prisma**, **tRPC**, and **Tailwind**, packaged in Docker  
-- A native **Swift app for macOS**  
-- A native **C# app for Windows**  
+- A native **Swift app for macOS** (planned)
+- A native **C# app for Windows** (planned)
 - Multi-cloud infrastructure support (Azure and AWS) for ingestion and processing  
 - Built-in compatibility with our favorite software deployment primates: **Munki** and **Cimian**
 
