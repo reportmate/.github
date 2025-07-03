@@ -1,13 +1,13 @@
-# Reportmate
+# ReportMate
 
-**Reportmate** is a modular, cross-platform endpoint reporting system powered by **osquery**, with support for our favorite software deployment primates: **Munki** and **Cimian**.
+**ReportMate** is a modular cross-platform endpoint reporting system powered by **osquery**, with support for our favorite software deployment primates: **Munki** and **Cimian**.
 
 - A modern T3 stack web app — built with **Next.js**, **Prisma**, **tRPC**, and **Tailwind**, packaged in Docker  
 - A native **Swift app for macOS** *(planned)*  
 - A native **C# app for Windows** *(planned)*  
 - Multi-cloud infrastructure support (Azure and AWS) for ingestion and processing  
 
-Designed for real-time telemetry across macOS and Windows fleets, Reportmate delivers visibility, modularity, and modern deployment workflows — all open to community extension through standalone module repositories.
+Designed for real-time telemetry across macOS and Windows fleets, ReportMate delivers visibility, modularity, and modern deployment workflows — all open to community extension through standalone module repositories.
 
 ## Core Repositories
 
