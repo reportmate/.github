@@ -16,8 +16,8 @@ Designed for real-time telemetry across macOS and Windows fleets, ReportMate del
 - **reportmate-csharp-app** – A native Windows app for viewing device state and local configuration  
 - **reportmate-mac-client** – macOS client for executing reporting queries  
 - **reportmate-windows-client** – Windows client for executing reporting queries  
-- **reportmate-infra-azure** – Terraform and serverless telemetry ingestion for Azure  
-- **reportmate-infra-aws** – Terraform and serverless telemetry ingestion for AWS  
+- **terraform-azurerm-reportmate** – Terraform and serverless telemetry ingestion for Azure  
+- **terraform-aws-reportmate** – Terraform and serverless telemetry ingestion for AWS  
 
 ## Modules
 
