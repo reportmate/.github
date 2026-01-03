@@ -14,8 +14,3 @@ Designed for real-time telemetry across macOS and Windows fleets, ReportMate del
 - **reportmate-windows-client** – Windows client for executing reporting queries  
 - **terraform-azurerm-reportmate** – Terraform and serverless telemetry ingestion for Azure  
 - **terraform-aws-reportmate** – Terraform and serverless telemetry ingestion for AWS  
-
-![Dashboard](https://github.com/reportmate/.github/blob/442e3a85657a92bd24821f00474216c854cfa96a/reportmate_dashboard.png)  
-![Devices](https://github.com/reportmate/.github/blob/442e3a85657a92bd24821f00474216c854cfa96a/reportmate_devices.png)  
-![Device Detail](https://github.com/reportmate/.github/blob/442e3a85657a92bd24821f00474216c854cfa96a/reportmate_device.png)  
-![Managed Installs](https://github.com/reportmate/.github/blob/442e3a85657a92bd24821f00474216c854cfa96a/reportmate_installs.png)
