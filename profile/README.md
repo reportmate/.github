@@ -6,11 +6,10 @@
 
 **Collection → Transmission → Ingestion → Storage → Display**
 
-- **Frontend**: Next.js web dashboard with React, Tailwind CSS, and TypeScript
-- **API**: FastAPI containerized REST API for device data ingestion and retrieval
-- **Database**: PostgreSQL with modular schema (one table per module)
-- **Deployment**: Docker containers with multi-cloud infrastructure support
-- **Infrastructure**: Terraform-managed resources for your cloud infra of choise: Azure, AWS, and (planned) GCS support
+- **Frontend**: Next.js web dashboard with React, Tailwind CSS, and TypeScript  
+- **Backend**: FastAPI containerized REST API with PostgreSQL database (modular schema, one table per module)  
+- **Deployment**: Docker containers with multi-cloud infrastructure support  
+- **Infrastructure**: Terraform-managed resources for your cloud infra of choise: Azure, AWS, and (planned) GCS support  
 
 **Key Features:**
 - Real-time device telemetry and visibility across macOS and Windows fleets
