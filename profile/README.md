@@ -1,6 +1,6 @@
 # ReportMate
 
-**ReportMate** is a modular endpoint reporting system for Macintosh and Windows devices powered by **osquery**, with deep support for our favorite software deployment tools: **Munki** and **Cimian**.
+**ReportMate** is an endpoint reporting system for Macintosh and Windows devices powered by **osquery**, **bash**, and **pwsh**, with deep support for our favorite software deployment primates: **Munki** and **Cimian**.
 
 ## Architecture
 
