@@ -15,7 +15,7 @@ Real-time hardware, software, security, and network data — collected at the en
 
 <div align="center">
 
-![ReportMate dashboard]([https://raw.githubusercontent.com/reportmate/.github/main/reportmate_dashboard.png](https://github.com/reportmate/reportmate-website/blob/main/public/dashboard.webp?raw=true))
+![ReportMate dashboard](https://github.com/reportmate/reportmate-website/blob/main/public/dashboard.webp?raw=true)
 
 </div>
 
