@@ -2,7 +2,7 @@
 
 # ReportMate
 
-### Endpoint management that just works
+## Your whole fleet. Always reporting in.
 
 Monitor, manage, and report on your **Mac and Windows** fleet from a single dashboard.
 Real-time hardware, software, security, and network data — collected at the endpoint, streamed to a live dashboard and API.
