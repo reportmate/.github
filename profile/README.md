@@ -28,7 +28,7 @@ Lightweight native agents collect data on-device with **osquery**, **bash**, and
 - **Real-time dashboard** — Next.js frontend with live fleet overview, device drill-down, and posture views
 - **REST API** — FastAPI backend with OpenAPI docs, versioned endpoints, rate limiting, and pagination
 - **Multi-cloud** — Terraform modules for Azure and AWS, or self-host on any infrastructure
-- **AI-ready** — query your fleet from the terminal (CLI) or expose it to AI agents (MCP server)
+- **Agentic** — query your fleet CLI or MCP (work in progress)
 
 ## Architecture
 
