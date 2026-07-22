@@ -4,7 +4,7 @@
 
 ### Endpoint management that just works
 
-Monitor, manage, and report on your **macOS and Windows** fleet from a single dashboard.
+Monitor, manage, and report on your **Mac and Windows** fleet from a single dashboard.
 Real-time hardware, software, security, and network data — collected at the endpoint, streamed to a live dashboard and API.
 
 **Self-host it for free, or let us run it for you.**
@@ -35,14 +35,14 @@ Lightweight native agents collect data on-device with **osquery**, **bash**, and
 **Collection → Transmission → Ingestion → Storage → Display**
 
 ```
-Agents (macOS / Windows)
+Local swift and csharp binaires (Mac / Windows)
   │  POST /api/v1/events
   ▼
 FastAPI backend ──── PostgreSQL  (one JSONB row per device per module)
   │
   ├── Web PubSub / SignalR  (real-time push)
   ▼
-Next.js dashboard  (fleet views, device detail)
+Next.js dashboard  (fleet views, device detail) | future native apps
 ```
 
 ## Repositories
@@ -79,7 +79,7 @@ Next.js dashboard  (fleet views, device detail)
 
 ## Open core
 
-ReportMate is genuinely open source. The **server** (API and web dashboard) is **AGPL-3.0**; the **endpoint agents**, **Terraform modules**, and **deployment tooling** are **MIT**. A separate commercial license is available for organizations whose policies do not permit AGPL.
+ReportMate is open source. The **server** (API and web dashboard) is **AGPL-3.0**; the **endpoint agents**, **Terraform modules**, and **deployment tooling** are **MIT**. A separate commercial license is available for organizations whose policies do not permit AGPL.
 
 Self-host the whole stack for free, or pick a [managed plan](https://reportmate.app/pricing) and we'll run it for you.
 
