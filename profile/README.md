@@ -17,6 +17,19 @@ Real-time hardware, software, security, and network data — collected at the en
 
 ![ReportMate dashboard](https://github.com/reportmate/reportmate-website/blob/main/public/dashboard.webp?raw=true)
 
+<table>
+  <tr>
+    <td><img src="https://github.com/reportmate/.github/blob/main/reportmate_devices.png?raw=true" alt="Fleet device list"></td>
+    <td><img src="https://github.com/reportmate/.github/blob/main/reportmate_device.png?raw=true" alt="Device detail"></td>
+    <td><img src="https://github.com/reportmate/.github/blob/main/reportmate_installs.png?raw=true" alt="Software installs"></td>
+  </tr>
+  <tr>
+    <td align="center">Every device</td>
+    <td align="center">One device, every module</td>
+    <td align="center">Installs across the fleet</td>
+  </tr>
+</table>
+
 </div>
 
 ## What it does
@@ -30,91 +43,82 @@ Lightweight native agents collect data on-device with **osquery**, **bash**, and
 - **REST API** — FastAPI backend with a published OpenAPI spec, versioned endpoints, rate limiting, and pagination
 - **Command line** — `reportmateutil`, one binary with a command for every API route, printing the API's JSON unchanged
 - **Multi-cloud** — Terraform modules for Azure and AWS, or self-host on any infrastructure
-- **Agentic** — query your fleet from scripts and coding agents through the CLI, or through the MCP server (work in progress)
+- **Scriptable** — `reportmateutil` gives scripts and coding agents the whole API from the terminal
 
 ## Architecture
 
 **Collection → Transmission → Ingestion → Storage → Display**
 
-```
-Swift and C# agents (Mac / Windows)
-  │  POST /api/v1/events
-  ▼
-FastAPI backend ──── PostgreSQL  (one JSONB row per device per module)
-  │
-  ├── Web PubSub / SignalR  (real-time push)
-  ▼
-Next.js dashboard · ReportMate for Mac · ReportMate for Windows · reportmateutil · MCP
+```mermaid
+flowchart LR
+  A["Mac agent<br/>Swift"] -->|POST /api/v1/events| API
+  B["Windows agent<br/>C#"] -->|POST /api/v1/events| API
+  API["FastAPI"] --- DB[("PostgreSQL<br/>one JSONB row per device per module")]
+  API -->|Web PubSub / SignalR| W["Web dashboard"]
+  API --> M["ReportMate for Mac"]
+  API --> N["ReportMate for Windows"]
+  API --> C["reportmateutil"]
+  API -.-> P["MCP server (beta)"]
 ```
 
 ## The command line: `reportmateutil`
 
-`reportmateutil` is the reference client for the API. Every read, report, maintenance and settings endpoint has a command, `--output json` prints exactly what the API returned, and a contract test in the repository fails the moment the API gains a route the tool does not know. The tool is named `reportmateutil` so that `reportmate` stays the name of the app that ships it.
-
-Configure it with the instance and one credential, then ask:
-
-```
-export REPORTMATE_API_URL=https://api.reportmate.example
-export REPORTMATE_API_KEY=rm_yourclient_yoursecret
-```
+One binary with a command for every API route, printing the API's JSON unchanged. It ships inside both native apps and as standalone tarballs on [its releases](https://github.com/reportmate/reportmate-cli/releases).
 
 ```
 reportmateutil devices --limit 20
 reportmateutil device SERIAL --module installs
-reportmateutil module network --output json | jq '.[].raw.activeConnection.ipAddress'
 reportmateutil events failures --hours 24
-reportmateutil logs munki --summary
 ```
 
-A scoped API key is the preferred credential (`read`, `ingest`, `admin` scopes; issued with `reportmateutil api-keys create`). An OIDC bearer token (`REPORTMATE_TOKEN`) and the shared client passphrase (`REPORTMATE_PASSPHRASE`) also work. `reportmateutil --help` lists every command.
+Setup, credentials and every command: [reportmate-cli](https://github.com/reportmate/reportmate-cli).
 
-**Where it comes from.** Each release attaches one tarball per platform (macOS arm64, x86_64 and universal; Windows x64 and arm64; Linux x64), unsigned, and an unsigned macOS installer package. The native apps bundle the binary from these releases at build time: on the Mac it lives at `ReportMate.app/Contents/Helpers/reportmateutil` with a `/usr/local/bin/reportmateutil` symlink, and on Windows it sits beside the app as `C:\Program Files\ReportMate\reportmateutil.exe`, on the PATH. Installing the app installs the tool.
+## Quick start
+
+Run the whole stack on one machine with Docker Compose. Clone the self-hosted repository and copy the environment template:
+
+```
+git clone https://github.com/reportmate/selfhosted-docker-reportmate
+cd selfhosted-docker-reportmate
+cp .env.example .env
+```
+
+Set `DB_PASSWORD`, `API_INTERNAL_SECRET`, `REPORTMATE_PASSPHRASE` and `NEXTAUTH_SECRET` in `.env`, then start it:
+
+```
+docker compose up -d
+```
+
+The dashboard is at http://localhost:3000 in demo mode and the API at http://localhost:8000. Point an agent at the API with the passphrase you set. For production, deploy with the [Azure](https://github.com/reportmate/terraform-azurerm-reportmate) or [AWS](https://github.com/reportmate/terraform-aws-reportmate) Terraform module, or bake the [appliance image](https://github.com/reportmate/selfhosted-docker-reportmate#appliance-image-packer).
 
 ## Repositories
 
-### Server
-| Repo | Stack | License | |
-|---|---|---|---|
-| [reportmate-api](https://github.com/reportmate/reportmate-api) | Python · FastAPI | AGPL-3.0 | Ingestion + query REST API; exports the OpenAPI spec on every build |
-| [reportmate-app-web](https://github.com/reportmate/reportmate-app-web) | TypeScript · Next.js | AGPL-3.0 | Real-time web dashboard |
-
-### Endpoint agents
-| Repo | Stack | License | |
-|---|---|---|---|
-| [reportmate-client-mac](https://github.com/reportmate/reportmate-client-mac) | Swift | MIT | macOS telemetry agent |
-| [reportmate-client-win](https://github.com/reportmate/reportmate-client-win) | C# · .NET | MIT | Windows telemetry agent |
-
-### Native apps
-| Repo | Stack | License | |
-|---|---|---|---|
-| [reportmate-app-swift](https://github.com/reportmate/reportmate-app-swift) | Swift · SwiftUI | — | ReportMate for Mac: the fleet dashboard as a native app, bundling `reportmateutil` |
-| [reportmate-app-csharp](https://github.com/reportmate/reportmate-app-csharp) | C# · WPF | — | ReportMate for Windows: the fleet dashboard as a native app, bundling `reportmateutil` |
-
-### Tooling
-| Repo | Stack | License | |
-|---|---|---|---|
-| [reportmate-cli](https://github.com/reportmate/reportmate-cli) | Rust | AGPL-3.0 | `reportmateutil`: query and manage your fleet from the terminal |
-| [reportmate-mcp](https://github.com/reportmate/reportmate-mcp) | Python · FastMCP | AGPL-3.0 | Expose your fleet to AI agents |
-
-### Deployment
-| Repo | Stack | License | |
-|---|---|---|---|
-| [terraform-azurerm-reportmate](https://github.com/reportmate/terraform-azurerm-reportmate) | HCL | MIT | Azure infrastructure module |
-| [terraform-aws-reportmate](https://github.com/reportmate/terraform-aws-reportmate) | HCL | MIT | AWS infrastructure module |
-| [selfhosted-docker-reportmate](https://github.com/reportmate/selfhosted-docker-reportmate) | Docker · Packer | MIT | Compose stack + appliance image |
-
-### Project
-| Repo | Stack | License | |
-|---|---|---|---|
-| [reportmate-website](https://github.com/reportmate/reportmate-website) | Astro | MIT | Marketing site and API docs — [reportmate.app](https://reportmate.app); the published spec is regenerated from the API source daily |
+| | Repo | Stack | License | |
+|---|---|---|---|---|
+| Server | [reportmate-api](https://github.com/reportmate/reportmate-api) | Python · FastAPI | AGPL-3.0 | Ingestion and query REST API; exports the OpenAPI spec on every build |
+| Server | [reportmate-app-web](https://github.com/reportmate/reportmate-app-web) | TypeScript · Next.js | AGPL-3.0 | Real-time web dashboard |
+| Agent | [reportmate-client-mac](https://github.com/reportmate/reportmate-client-mac) | Swift | MIT | macOS telemetry agent |
+| Agent | [reportmate-client-win](https://github.com/reportmate/reportmate-client-win) | C# · .NET | MIT | Windows telemetry agent |
+| App | [reportmate-app-swift](https://github.com/reportmate/reportmate-app-swift) | Swift · SwiftUI | MIT | ReportMate for Mac, bundling `reportmateutil` |
+| App | [reportmate-app-csharp](https://github.com/reportmate/reportmate-app-csharp) | C# · WPF | MIT | ReportMate for Windows, bundling `reportmateutil` |
+| Tooling | [reportmate-cli](https://github.com/reportmate/reportmate-cli) | Rust | AGPL-3.0 | `reportmateutil`, the fleet from the terminal |
+| Tooling | [reportmate-mcp](https://github.com/reportmate/reportmate-mcp) | Python · FastMCP | AGPL-3.0 | Your fleet for AI agents (beta) |
+| Deploy | [terraform-azurerm-reportmate](https://github.com/reportmate/terraform-azurerm-reportmate) | HCL | MIT | Azure infrastructure module |
+| Deploy | [terraform-aws-reportmate](https://github.com/reportmate/terraform-aws-reportmate) | HCL | MIT | AWS infrastructure module |
+| Deploy | [selfhosted-docker-reportmate](https://github.com/reportmate/selfhosted-docker-reportmate) | Docker · Packer | MIT | Compose stack and appliance image |
+| Project | [reportmate-website](https://github.com/reportmate/reportmate-website) | Astro | MIT | [reportmate.app](https://reportmate.app) and the API docs, regenerated from the API source daily |
 
 ## Releases and signing
 
 Public repositories build **unsigned** artifacts on every push and publish them as GitHub release assets on a version tag: the agents' packages, the apps' bundles and installers, and the CLI's tarballs. Signing, notarization and deployment to endpoints happen downstream, in whatever management pipeline runs a fleet, against a pinned release. No signing identity or fleet configuration lives in these repositories.
 
+## Part of a bigger toolkit
+
+ReportMate reports on a fleet that something else provisions and manages. [BootstrapMate](https://github.com/bootstrapmate) provisions new Macs and PCs and can post each run's summary to ReportMate, and the agents read deep detail from [Munki](https://github.com/munki/munki) and [Cimian](https://github.com/windowsadmins/cimian), the tools that keep software current afterwards.
+
 ## Open core
 
-ReportMate is open source. The **server** (API and web dashboard) and the **CLI** are **AGPL-3.0**; the **endpoint agents**, **Terraform modules**, and **deployment tooling** are **MIT**. A separate commercial license is available for organizations whose policies do not permit AGPL.
+ReportMate is open source. The **server** (API and web dashboard) and the **CLI** are **AGPL-3.0**; the **endpoint agents**, **native apps**, **Terraform modules**, and **deployment tooling** are **MIT**. A separate commercial license is available for organizations whose policies do not permit AGPL.
 
 Self-host the whole stack for free, or pick a [managed plan](https://reportmate.app/pricing) and we'll run it for you.
 
