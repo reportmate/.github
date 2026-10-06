@@ -99,8 +99,8 @@ The dashboard is at http://localhost:3000 in demo mode and the API at http://loc
 | Server | [reportmate-app-web](https://github.com/reportmate/reportmate-app-web) | TypeScript · Next.js | AGPL-3.0 | Real-time web dashboard |
 | Agent | [reportmate-client-mac](https://github.com/reportmate/reportmate-client-mac) | Swift | MIT | macOS telemetry agent |
 | Agent | [reportmate-client-win](https://github.com/reportmate/reportmate-client-win) | C# · .NET | MIT | Windows telemetry agent |
-| App | [reportmate-app-swift](https://github.com/reportmate/reportmate-app-swift) | Swift · SwiftUI | LICENSE_TBD | ReportMate for Mac, bundling `reportmateutil` |
-| App | [reportmate-app-csharp](https://github.com/reportmate/reportmate-app-csharp) | C# · WPF | LICENSE_TBD | ReportMate for Windows, bundling `reportmateutil` |
+| App | [reportmate-app-swift](https://github.com/reportmate/reportmate-app-swift) | Swift · SwiftUI | MIT | ReportMate for Mac, bundling `reportmateutil` |
+| App | [reportmate-app-csharp](https://github.com/reportmate/reportmate-app-csharp) | C# · WPF | MIT | ReportMate for Windows, bundling `reportmateutil` |
 | Tooling | [reportmate-cli](https://github.com/reportmate/reportmate-cli) | Rust | AGPL-3.0 | `reportmateutil`, the fleet from the terminal |
 | Tooling | [reportmate-mcp](https://github.com/reportmate/reportmate-mcp) | Python · FastMCP | AGPL-3.0 | Your fleet for AI agents (beta) |
 | Deploy | [terraform-azurerm-reportmate](https://github.com/reportmate/terraform-azurerm-reportmate) | HCL | MIT | Azure infrastructure module |
@@ -118,7 +118,7 @@ ReportMate reports on a fleet that something else provisions and manages. [Boots
 
 ## Open core
 
-ReportMate is open source. The **server** (API and web dashboard) and the **CLI** are **AGPL-3.0**; the **endpoint agents**, **Terraform modules**, and **deployment tooling** are **MIT**. A separate commercial license is available for organizations whose policies do not permit AGPL.
+ReportMate is open source. The **server** (API and web dashboard) and the **CLI** are **AGPL-3.0**; the **endpoint agents**, **native apps**, **Terraform modules**, and **deployment tooling** are **MIT**. A separate commercial license is available for organizations whose policies do not permit AGPL.
 
 Self-host the whole stack for free, or pick a [managed plan](https://reportmate.app/pricing) and we'll run it for you.
 
