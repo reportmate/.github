@@ -4,7 +4,7 @@
 
 ## Your whole fleet. Always reporting in.
 
-Monitor, manage, and report on your **Mac and Windows** fleet from a single dashboard.
+Monitor and report on your **Mac and Windows** fleet from a single dashboard.
 Real-time hardware, software, security, and network data — collected at the endpoint, streamed to a live dashboard, an API, native apps, and a command-line tool.
 
 **Self-host it for free, or let us run it for you.**
@@ -36,14 +36,15 @@ Real-time hardware, software, security, and network data — collected at the en
 
 Lightweight native agents collect data on-device with **osquery**, **bash**, and **pwsh** — with deep support for the **Munki** and **Cimian** software deployment tools — and POST a unified JSON payload to the API. Everything downstream is a reader: heavy lifting happens at the endpoint, not in the cloud.
 
+Munki and Cimian are optional. Without them every module works except managed installs, which stays empty.
+
 - **Cross-platform** — native agents for macOS (Swift) and Windows (C#/.NET)
-- **Eleven modules** — hardware, network, security, applications, installs, inventory, system, management, peripherals, identity, profiles
+- **Ten modules** — hardware, network, security, applications, installs, inventory, system, management (with configuration profiles), peripherals (with displays and printers), identity
 - **Real-time dashboard** — Next.js frontend with live fleet overview, device drill-down, and posture views
 - **Native apps** — the same fleet views as a SwiftUI app on the Mac and a WPF app on Windows, each also able to read the local agent's cache with no API
 - **REST API** — FastAPI backend with a published OpenAPI spec, versioned endpoints, rate limiting, and pagination
 - **Command line** — `reportmateutil`, one binary with a command for every API route, printing the API's JSON unchanged
 - **Multi-cloud** — Terraform modules for Azure and AWS, or self-host on any infrastructure
-- **Scriptable** — `reportmateutil` gives scripts and coding agents the whole API from the terminal
 
 ## Architecture
 
