@@ -38,6 +38,8 @@ Lightweight native agents collect data on-device with **osquery**, **bash**, and
 
 Munki and Cimian are optional. Without them every module works except managed installs, which stays empty.
 
+Each module's osquery queries are plain JSON files on the endpoint, so you can edit or extend them. A new query appears in the dashboard once a module maps its results.
+
 - **Cross-platform** — native agents for macOS (Swift) and Windows (C#/.NET)
 - **Ten modules** — hardware, network, security, applications, installs, inventory, system, management (with configuration profiles), peripherals (with displays and printers), identity
 - **Real-time dashboard** — Next.js frontend with live fleet overview, device drill-down, and posture views
