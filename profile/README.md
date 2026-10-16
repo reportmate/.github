@@ -9,7 +9,9 @@ Real-time hardware, software, security, and network data — collected at the en
 
 **Self-host it for free, or let us run it for you.**
 
-[**Website**](https://reportmate.app) · [**Live Demo**](https://demo.reportmate.app) · [**API Docs**](https://reportmate.app/docs) · [**OpenAPI spec**](https://reportmate.app/openapi.json)
+[![Try the live demo](https://github.com/reportmate/.github/blob/main/live_demo_button.svg?raw=true)](https://demo.reportmate.app)
+
+[**Website**](https://reportmate.app) · [**API Docs**](https://reportmate.app/docs) · [**OpenAPI spec**](https://reportmate.app/openapi.json)
 
 </div>
 
