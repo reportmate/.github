@@ -113,6 +113,10 @@ The dashboard is at http://localhost:3000 in demo mode and the API at http://loc
 | Deploy | [selfhosted-docker-reportmate](https://github.com/reportmate/selfhosted-docker-reportmate) | Docker · Packer | MIT | Compose stack and appliance image |
 | Project | [reportmate-website](https://github.com/reportmate/reportmate-website) | Astro | MIT | [reportmate.app](https://reportmate.app) and the API docs, regenerated from the API source daily |
 
+## Project documentation
+
+The [repository wiki index](https://github.com/reportmate/.github/blob/main/wiki/README.md) links each component's setup, development and deployment guides.
+
 ## Releases and signing
 
 Public repositories build **unsigned** artifacts on every push and publish them as GitHub release assets on a version tag: the agents' packages, the apps' bundles and installers, and the CLI's tarballs. Signing, notarization and deployment to endpoints happen downstream, in whatever management pipeline runs a fleet, against a pinned release. No signing identity or fleet configuration lives in these repositories.
