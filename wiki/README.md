@@ -25,7 +25,7 @@ A component's current source and tests establish implemented behavior; roadmap d
 
 The agents collect on the endpoint and POST one JSON payload per run to the API. The API owns ingestion, storage (one PostgreSQL JSONB row per device per module) and the versioned HTTP contract published as the [OpenAPI spec](https://reportmate.app/openapi.json). The web dashboard, native apps, CLI and MCP server are readers of that contract. The Terraform modules and the Docker stack deploy the server components.
 
-The [organization profile](../profile/README.md) introduces the product. Screenshots and the demo button live in this repository; link them from component documentation instead of creating copies.
+The [organization profile](../profile/README.md) introduces the product, with its screenshots and demo button in the same folder. [Brand assets](../branding) hold the shared logo, mark and app icon source. Link these from component documentation instead of creating copies.
 
 ## Documentation conventions
 
