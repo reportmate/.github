@@ -9,7 +9,7 @@ Real-time hardware, software, security, and network data — collected at the en
 
 **Self-host it for free, or let us run it for you.**
 
-[![Try the live demo](https://github.com/reportmate/.github/blob/main/live_demo_button.svg?raw=true)](https://demo.reportmate.app)
+[![Try the live demo](https://github.com/reportmate/.github/blob/main/profile/live_demo_button.svg?raw=true)](https://demo.reportmate.app)
 
 [**Website**](https://reportmate.app) · [**API Docs**](https://reportmate.app/docs) · [**OpenAPI spec**](https://reportmate.app/openapi.json)
 
@@ -21,9 +21,9 @@ Real-time hardware, software, security, and network data — collected at the en
 
 <table>
   <tr>
-    <td><img src="https://github.com/reportmate/.github/blob/main/reportmate_devices.png?raw=true" alt="Fleet device list"></td>
-    <td><img src="https://github.com/reportmate/.github/blob/main/reportmate_device.png?raw=true" alt="Device detail"></td>
-    <td><img src="https://github.com/reportmate/.github/blob/main/reportmate_installs.png?raw=true" alt="Software installs"></td>
+    <td><img src="https://github.com/reportmate/.github/blob/main/profile/reportmate_devices.png?raw=true" alt="Fleet device list"></td>
+    <td><img src="https://github.com/reportmate/.github/blob/main/profile/reportmate_device.png?raw=true" alt="Device detail"></td>
+    <td><img src="https://github.com/reportmate/.github/blob/main/profile/reportmate_installs.png?raw=true" alt="Software installs"></td>
   </tr>
   <tr>
     <td align="center">Every device</td>
