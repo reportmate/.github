@@ -12,12 +12,6 @@ ReportMate already uses frameworks for HTTP, web UI and native UI. The missing o
 
 This layer can develop within the existing architecture. It does not require a separately deployed service, a new public framework project or a rewrite.
 
-## Architectural references
-
-[Frappe](https://github.com/frappe/frappe) demonstrates how metadata, generated APIs, permissions, forms and reporting can support many applications. [ERPNext](https://github.com/frappe/erpnext) demonstrates business functionality built on that foundation. The useful lesson is to identify reusable application capabilities explicitly and develop them through working features.
-
-[Cellarum](https://github.com/cellarum) has a broader product direction involving connected inventory and operational workflows. Its framework needs overlap with ReportMate's, but ReportMate has a narrower responsibility: collecting and interpreting endpoint observations and presenting fleet reports. This proposal does not make ReportMate depend on Cellarum or adopt Frappe.
-
 ## Existing foundations and gaps
 
 The initial source review found these foundations. These are starting points to validate during design, not a comprehensive audit of every component.
