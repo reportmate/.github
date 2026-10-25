@@ -23,6 +23,8 @@ A component's current source and tests establish implemented behavior; roadmap d
 
 ## Product architecture
 
+The [shared application layer proposal](../docs/architecture/shared-application-layer.md) describes cross-repository collection contracts, normalization, reporting semantics and access enforcement, with hardware and security as the first adoption slices. It remains a proposal; implementation work is tracked separately.
+
 The agents collect on the endpoint and POST one JSON payload per run to the API. The API owns ingestion, storage (one PostgreSQL JSONB row per device per module) and the versioned HTTP contract published as the [OpenAPI spec](https://reportmate.app/openapi.json). The web dashboard, native apps, CLI and MCP server are readers of that contract. The Terraform modules and the Docker stack deploy the server components.
 
 The [organization profile](../profile/README.md) introduces the product, with its screenshots and demo button in the same folder. [Brand assets](../branding) hold the shared logo, mark and app icon source. Link these from component documentation instead of creating copies.
